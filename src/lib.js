@@ -26,7 +26,7 @@ const makeDeltaTracker = function(value) {
       deltaObject.delta = currentDeltaValue;
       deltaObject.new = deltaObject.old + deltaObject.delta;
     }
-    return deltaObject;
+    return Object.assign({}, deltaObject);
   }
 }
 
