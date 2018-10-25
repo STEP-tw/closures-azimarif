@@ -47,7 +47,14 @@ const curry = function(functionPassed, number){
   }
 
 }
-const compose = undefined;
+const compose = function(function1, function2){
+  return function(array1, array2){
+    if(array2 == undefined){
+      return function1(function2(array1));
+    }
+    return function1(function2(array1, array2));
+  }
+}
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
