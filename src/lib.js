@@ -11,10 +11,7 @@ const makeCounterFromN = function(count) {
 }
 
 const makeCounterFromZero = function() {
-  let counter = 0;
-  return function() {
-    return counter++;
-  }
+  return makeCounterFromN(0);
 }
 
 
