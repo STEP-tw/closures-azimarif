@@ -17,15 +17,28 @@ const makeCounterFromZero = function(){
   }
 }
 
-const makeDeltaTracker = undefined;
+const makeDeltaTracker = function(oldValue){
+  let old = oldValue;
+  let delta = 0;
+  let newValue = old +delta;
+  return function(deltaValue){
+    if(deltaValue == undefined){
+        return { old, delta , new :newValue }
+    }
+    newValue = old + deltaValue; 
+    let object =  { old, delta : deltaValue, new : newValue }
+    old = newValue;
+    return object;
+  }
+}
 
 const makeFiboGenerator = undefined;
 
 const makeCycler = function(array){
   let index = 0;
   let currentIndex =index;
-  myArray = array.slice();
-  length = myArray.length;
+  let myArray = array.slice();
+  let length = myArray.length;
   return function(){
     if(index + 2 > length){
       currentIndex = index;
