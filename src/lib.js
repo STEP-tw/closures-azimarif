@@ -34,37 +34,27 @@ const makeDeltaTracker = function(value) {
   }
 }
 
-const makeFiboGenerator = function(increaseBy, second) {
-  let count = 0;
-  if (second != undefined) {
-    let a = increaseBy;
-    let b = second;
-    let z = -1
-    return function() {
-      if (count < 2) {
-        count++;
-        z = z + 2;
-        return z;
-      }
-      sum = a + b;
-      a = b;
-      b = sum;
-      return b;
-    }
+const setNumbers = function(firstNumber, secondNumber) {
+  if (!secondNumber && !firstNumber) {
+    firstNumber = 0;
+    secondNumber = 1;
   }
-
-  if (increaseBy == undefined) {
-    increaseBy = 1;
-    second = 3;
+  if (firstNumber && !secondNumber) {
+    secondNumber = firstNumber;
+    firstNumber = 0;
   }
-  let firstNumber = -1 * increaseBy;
-  let secondNumber = 1 * increaseBy;
+  return {
+    firstNumber, secondNumber
+  };
+}
 
+const makeFiboGenerator = function(firstNumber, secondNumber) {
+  let numbers = setNumbers(firstNumber, secondNumber);
   return function() {
-    let sum = firstNumber + secondNumber;
-    firstNumber = secondNumber;
-    secondNumber = sum;
-    return secondNumber;
+    let fiboNumber = numbers.firstNumber;
+    numbers.firstNumber = numbers.secondNumber;
+    numbers.secondNumber = numbers.secondNumber + fiboNumber;
+    return fiboNumber;
   }
 };
 
