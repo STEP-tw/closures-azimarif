@@ -58,20 +58,16 @@ const makeFiboGenerator = function(firstNumber, secondNumber) {
   }
 };
 
-const makeCycler = function(array) {
+const makeCycler = function(inputSource) {
   let index = 0;
-  let currentIndex = index;
-  let actualArray = array.slice();
-  let length = actualArray.length;
+  let originalSource = inputSource.slice();
+  let length = originalSource.length;
   return function() {
-    if (index + 2 > length) {
-      currentIndex = index;
+    let value = originalSource[index++];
+    if (index == originalSource.length) {
       index = 0;
-      return actualArray[currentIndex];
     }
-    currentIndex = index;
-    index++;
-    return actualArray[currentIndex];
+    return value;
   }
 };
 
