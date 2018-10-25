@@ -37,7 +37,16 @@ const makeCycler = function(array){
     return myArray[currentIndex];
   }
 };
-const curry = undefined;
+
+const curry = function(functionPassed, number){
+  return function(value1, value2){
+    if(value2 == undefined){
+      return functionPassed(number, value1);
+    }
+    return functionPassed(number, value1, value2);
+  }
+
+}
 const compose = undefined;
 
 exports.makeConstant=makeConstant;
