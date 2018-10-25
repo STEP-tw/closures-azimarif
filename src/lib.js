@@ -73,18 +73,12 @@ const makeCycler = function(inputSource) {
 
 const curry = function(functionPassed, number) {
   return function(value1, value2) {
-    if (value2 == undefined) {
-      return functionPassed(number, value1);
-    }
     return functionPassed(number, value1, value2);
   }
-
 }
+
 const compose = function(function1, function2) {
   return function(array1, array2) {
-    if (array2 == undefined) {
-      return function1(function2(array1));
-    }
     return function1(function2(array1, array2));
   }
 }
