@@ -14,7 +14,6 @@ const makeCounterFromZero = function() {
   return makeCounterFromN(0);
 }
 
-
 const makeDeltaTracker = function(value) {
   let deltaObject = {
     old: value,
@@ -25,7 +24,7 @@ const makeDeltaTracker = function(value) {
     if (currentDeltaValue) {
       deltaObject.old = deltaObject.new;
       deltaObject.delta = currentDeltaValue;
-      deltaObject.new = deltaObject.old + currentDeltaValue;
+      deltaObject.new = deltaObject.old + deltaObject.delta;
     }
     return deltaObject;
   }
@@ -53,7 +52,7 @@ const makeFiboGenerator = function(firstNumber, secondNumber) {
     numbers.secondNumber = numbers.secondNumber + fiboNumber;
     return fiboNumber;
   }
-};
+}
 
 const makeCycler = function(inputSource) {
   let index = 0;
@@ -66,7 +65,7 @@ const makeCycler = function(inputSource) {
     }
     return value;
   }
-};
+}
 
 const curry = function(functionPassed, number) {
   return function(value1, value2) {
@@ -75,8 +74,8 @@ const curry = function(functionPassed, number) {
 }
 
 const compose = function(function1, function2) {
-  return function(array1, array2) {
-    return function1(function2(array1, array2));
+  return function(source1, source2) {
+    return function1(function2(source1, source2));
   }
 }
 
